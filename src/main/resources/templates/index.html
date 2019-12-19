@@ -22,13 +22,37 @@
         <h2 th:text="'Hello ' + ${company}"></h2>
     </div>
 
-    <div>
-        <h3>List of random messages:</h3>
-        <!-- Simple for loop in thymeleaf -->
-        <ul th:each="message : ${messages}">
-            <li th:text="${message.getMsg()}"></li>
-        </ul>
+    <!--    <div>-->
+    <!--        <h3>List of random messages:</h3>-->
+    <!--        &lt;!&ndash; Simple for loop in thymeleaf &ndash;&gt;-->
+    <!--        <ul th:each="message : ${messages}">-->
+    <!--            <li th:text="${message.getMsg()}"></li>-->
+    <!--        </ul>-->
+    <!--    </div>-->
+
+    <div class="container-fluid" style="margin-top: 20px">
+        <form th:action="@{/}" method="post">
+
+            <div class="form-group">
+                <label>Translate to:</label>
+                <select class="form-control" id="inputLanguage" required>
+                    <option value="">None</option>
+                    <option th:value="fr">French</option>
+                    <option th:value="sp">Spanish</option>
+                    <option th:value="jp">Japanese</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Text to translate:</label>
+                <textarea autofocus="autofocus" class="form-control" placeholder="Enter text" rows="5" required="true"></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
     </div>
+
+
 </div>
 
 </body>
