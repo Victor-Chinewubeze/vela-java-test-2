@@ -1,7 +1,10 @@
 package com.unbabel.challenge.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 public class Message {
 
@@ -10,20 +13,21 @@ public class Message {
     private Long id;
 
     @Column(length = 100)
-    private String msg;
+    private String text;
 
-    public Message() {
-    }
+    private String source_language;
 
-    public Message(String msg) {
-        this.msg = msg;
-    }
+    private String target_language;
 
-    public String getMsg() {
-        return msg;
-    }
+    private String text_format;
 
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
+    private String uid;
+
+    private String status;
+
+    private double order_number;
+
+    private double price;
+
+    private String translatedText;
 }
