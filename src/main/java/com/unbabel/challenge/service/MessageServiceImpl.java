@@ -1,13 +1,15 @@
-package com.unbabel.challenge.services;
+package com.unbabel.challenge.service;
 
 import com.unbabel.challenge.model.Message;
-import com.unbabel.challenge.repositories.MessageRepository;
+import com.unbabel.challenge.repository.MessageRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Set;
 
+@Service
 public class MessageServiceImpl implements MessageService {
 
     RestTemplate restTemplate;
@@ -21,6 +23,9 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Message translate(Message message) {
+        Message responseMessage = null;
+
+
         return null;
     }
 

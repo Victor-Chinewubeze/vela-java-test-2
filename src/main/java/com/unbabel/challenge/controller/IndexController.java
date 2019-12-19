@@ -1,8 +1,6 @@
 package com.unbabel.challenge.controller;
 
-import com.unbabel.challenge.model.Message;
-import com.unbabel.challenge.repositories.MessageRepository;
-import org.apache.commons.lang.RandomStringUtils;
+import com.unbabel.challenge.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

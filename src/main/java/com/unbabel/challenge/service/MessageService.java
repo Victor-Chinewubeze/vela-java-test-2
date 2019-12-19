@@ -1,4 +1,4 @@
-package com.unbabel.challenge.services;
+package com.unbabel.challenge.service;
 
 import com.unbabel.challenge.model.Message;
 

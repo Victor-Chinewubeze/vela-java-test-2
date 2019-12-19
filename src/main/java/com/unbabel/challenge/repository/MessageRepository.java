@@ -1,4 +1,4 @@
-package com.unbabel.challenge.repositories;
+package com.unbabel.challenge.repository;
 
 import com.unbabel.challenge.model.Message;
 import org.springframework.data.repository.CrudRepository;
