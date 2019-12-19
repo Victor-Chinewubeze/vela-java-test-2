@@ -26,25 +26,11 @@ public class IndexController {
      */
     @GetMapping("/")
     public String main(Model model) {
-        generateNMessages(10);
         //set variables to be used in thymeleaf template
         model.addAttribute("company", company);
-        model.addAttribute("messages", messageRepository.findAll());
-
         return "index"; //thymeleaf template name (index -> index.html)
     }
 
-
-    /**
-     * Deletes all messages and inserts new random ones
-     * @param repetitions number of times to loop
-     */
-    private void generateNMessages(int repetitions) {
-        messageRepository.deleteAll(); //clean all random str
-        for (int i = 0; i < repetitions; i++) {
-            messageRepository.save(new Message(RandomStringUtils.randomAlphabetic(30)));
-        }
-    }
 
 
 }
