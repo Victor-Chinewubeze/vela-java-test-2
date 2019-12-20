@@ -31,8 +31,8 @@ public class MessageServiceImpl implements MessageService {
     public Message translate(Message message) {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        Message responseMessage = null;
-//
+        Message responseMessage = new Message();
+
 //        try {
 //            String jsonString = objectMapper.writeValueAsString(message);
 //            HttpHeaders headers = HeaderUtil.setHeaders();
