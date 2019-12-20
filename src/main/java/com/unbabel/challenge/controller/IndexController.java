@@ -49,9 +49,7 @@ public class IndexController {
         message.setText_format("text");
         messageService.translate(message);
 
-
         return "redirect:/";
-
     }
 
 }

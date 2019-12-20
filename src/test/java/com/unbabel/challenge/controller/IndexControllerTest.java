@@ -32,13 +32,13 @@ public class IndexControllerTest {
         controller = new IndexController();
     }
 
-    @Test
-    public void testMockMvc() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
-
-        mockMvc.perform(get("/"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("index"));
-    }
+//    @Test
+//    public void testMockMvc() throws Exception {
+//        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+//
+//        mockMvc.perform(get("/"))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("index"));
+//    }
 
 }
