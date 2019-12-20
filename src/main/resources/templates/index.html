@@ -16,58 +16,76 @@
     <a class="navbar-brand" href="#">Unbabel Challenge</a>
 </nav>
 
-<div th:class="container">
-    <div class="company-name">
-        <!-- This comes from the properties file -->
-        <h2 th:text="'Hello ' + ${company}"></h2>
-    </div>
+<div class="jumbotron jumbotron-fluid">
+    <div th:class="container">
+        <div class="company-name">
+            <!-- This comes from the properties file -->
+            <h2 th:text="'Hello ' + ${company}"></h2>
+        </div>
 
-    <!--    <div>-->
-    <!--        <h3>List of random messages:</h3>-->
-    <!--        &lt;!&ndash; Simple for loop in thymeleaf &ndash;&gt;-->
-    <!--        <ul th:each="message : ${messages}">-->
-    <!--            <li th:text="${message.getMsg()}"></li>-->
-    <!--        </ul>-->
-    <!--    </div>-->
+        <!--    <div>-->
+        <!--        <h3>List of random messages:</h3>-->
+        <!--        &lt;!&ndash; Simple for loop in thymeleaf &ndash;&gt;-->
+        <!--        <ul th:each="message : ${messages}">-->
+        <!--            <li th:text="${message.getMsg()}"></li>-->
+        <!--        </ul>-->
+        <!--    </div>-->
 
-    <div class="container-fluid" style="margin-top: 20px">
-        <form th:object="${message}" th:action="@{/}" method="post">
+        <div class="container-fluid" style="margin-top: 20px">
+            <form th:object="${message}" th:action="@{/}" method="post">
 
-            <div class="form-group">
+                <div class="form-group">
 
-            <div class="form-group">
-                <label>Text to translate:</label>
-                <textarea autofocus="autofocus" class="form-control" placeholder="Enter text" rows="5" th:field="*{text}" required="true"></textarea>
-            </div>
-
-                <label>Translate to:</label>
-                <select class="form-control" id="inputLanguage" th:field="*{target_language}" required>
-                    <option value="">None</option>
-                    <option th:value="fr">French</option>
-                    <option th:value="sp">Spanish</option>
-                    <option th:value="jp">Japanese</option>
-                </select>
-            </div>
-
-            <button class="btn btn-primary" type="submit">Submit</button>
-        </form>
-    </div>
-
-    <div class="container-fluid" style="margin-top: 20px">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel-group">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h1 class="panel-title" th:text="Translation"></h1>
-                        </div>
-
+                    <div class="form-group">
+                        <label>Text to translate:</label>
+                        <textarea autofocus="autofocus" class="form-control" placeholder="Enter text" rows="5"
+                                  th:field="*{text}" required="true"></textarea>
                     </div>
+
+                    <label>Translate to:</label>
+                    <select class="form-control" id="inputLanguage" th:field="*{target_language}" required>
+                        <option value="">None</option>
+                        <option th:value="fr">French</option>
+                        <option th:value="sp">Spanish</option>
+                        <option th:value="jp">Japanese</option>
+                    </select>
                 </div>
+
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <hr>
+
+        <div class="panel-heading">
+            <h3 class="panel-title" th:if="${not #lists.isEmpty(messages)}">Translated Messages</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive" th:if="${not #lists.isEmpty(messages)}">
+                <table class="table table-hover ">
+                    <thead class="thead-inverse">
+                    <tr>
+                        <th>From Language</th>
+                        <th>Original Text</th>
+                        <th>To Language</th>
+                        <th>Translated Text</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myTable">
+                    <tr th:each="entry : ${messages}">
+                        <td th:text="${entry.getSource_language()}"></td>
+                        <td th:text="${entry.getText()}"></td>
+                        <td th:text="${entry.getTarget_language()}"></td>
+                        <td th:text="${entry.getTranslatedText()}"></td>
+                        <td th:text="${entry.getStatus()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
 
+    </div>
 </div>
 
 </body>

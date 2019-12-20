@@ -14,6 +14,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -52,50 +53,20 @@ public class MessageServiceImpl implements MessageService {
 
         responseMessage.setStatus("translated");
 
-
-
-//        try {
-//            String jsonString = objectMapper.writeValueAsString(message);
-//            HttpHeaders headers = HeaderUtil.setHeaders();
-//            HttpEntity<String> entity = new HttpEntity<>(jsonString, headers);
-//
-//            logger.info("Request sent");
-//            responseMessage = restTemplate.postForObject(URL, entity, Message.class);
-//            messageRepository.save(responseMessage);
-//            logger.info("Message saved on database!");
-//
-//        } catch (IOException e) {
-//            logger.error(e.getMessage());
-//        } catch (HttpServerErrorException e) {
-//            logger.error(e.getMessage());
-//            translate(message);
-//        }
-
-
-
-        logger.info(responseMessage.getSource_language());
-        logger.info(responseMessage.getTarget_language());
-        logger.info(responseMessage.getText());
-        logger.info(responseMessage.getTranslatedText());
-
-        messageRepository.save(responseMessage);
-        logger.info("Message saved on database!");
-
+        saveMessage(responseMessage);
         return responseMessage;
     }
 
     @Override
-    public Message getStatus(Message message) {
-        return null;
-    }
-
-    @Override
     public void saveMessage(Message message) {
-
+        messageRepository.save(message);
+        logger.info("Message saved on database!");
     }
 
     @Override
     public Set<Message> getMessages() {
-        return null;
+        Set<Message> messageSet = new HashSet<>();
+        messageRepository.findAll().iterator().forEachRemaining(messageSet::add);
+        return messageSet;
     }
 }

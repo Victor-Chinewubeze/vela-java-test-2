@@ -29,10 +29,11 @@ public class IndexController {
      * @return generated html page using thymeleaf
      */
     @GetMapping("/")
-    public String main(Model model) {
+    public String renderHomePage(Model model) {
         //set variables to be used in thymeleaf template
         model.addAttribute("company", company);
         model.addAttribute("message", new Message());
+        model.addAttribute("messages", messageService.getMessages());
         return "index"; //thymeleaf template name (index -> index.html)
     }
 
