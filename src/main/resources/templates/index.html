@@ -31,17 +31,17 @@
     <!--    </div>-->
 
     <div class="container-fluid" style="margin-top: 20px">
-        <form th:action="@{/}" method="post">
+        <form th:object="${message}" th:action="@{/}" method="post">
 
             <div class="form-group">
 
             <div class="form-group">
                 <label>Text to translate:</label>
-                <textarea autofocus="autofocus" class="form-control" placeholder="Enter text" rows="5" required="true"></textarea>
+                <textarea autofocus="autofocus" class="form-control" placeholder="Enter text" rows="5" th:field="*{text}" required="true"></textarea>
             </div>
 
                 <label>Translate to:</label>
-                <select class="form-control" id="inputLanguage" required>
+                <select class="form-control" id="inputLanguage" th:field="*{target_language}" required>
                     <option value="">None</option>
                     <option th:value="fr">French</option>
                     <option th:value="sp">Spanish</option>

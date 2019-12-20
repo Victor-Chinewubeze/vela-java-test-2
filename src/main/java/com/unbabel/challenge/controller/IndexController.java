@@ -32,6 +32,7 @@ public class IndexController {
     public String main(Model model) {
         //set variables to be used in thymeleaf template
         model.addAttribute("company", company);
+        model.addAttribute("message", new Message());
         return "index"; //thymeleaf template name (index -> index.html)
     }
 
@@ -46,6 +47,7 @@ public class IndexController {
         message.setSource_language("en");
         message.setText_format("text");
         messageService.translate(message);
+
 
         return "redirect:/";
 
